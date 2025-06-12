@@ -52,7 +52,8 @@ def clean_and_prepare_df(df_raw):
     df_clean = df_clean[pd.to_datetime(df_clean["תאריך"], errors="coerce").notna()]
     df_clean["תאריך"] = pd.to_datetime(df_clean["תאריך"])
 
-    return df_clean[["תאריך", "בית עסק", "סכום"]]if db_file:
+    return df_clean[["תאריך", "בית עסק", "סכום"]]
+    if db_file:
     db_df = pd.read_excel(db_file)
     if "פירוט נוסף" not in db_df.columns:
         st.error("קובץ מסד הנתונים אינו כולל עמודה בשם 'פירוט נוסף'.")
